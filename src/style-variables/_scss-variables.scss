@@ -1,0 +1,24 @@
+$color-dark-1: #191a1d;
+$color-grey-light: #ababab;
+$color-grey-light-2: #f6f6f6;
+
+$shadow-1: 0 0.3rem 0.5rem rgba($color-dark-1, 0.1);
+$shadow-2: 0 0.3rem 0.5rem rgba($color-dark-1, 0.2);
+
+$title-size: 3rem;
+
+$form-gap: 4rem;
+
+@mixin resetLink {
+  color: inherit;
+  background-color: inherit;
+  background-image: none;
+
+  cursor: pointer;
+
+  &:link,
+  &:visited {
+    color: inherit;
+    text-decoration: none;
+  }
+}

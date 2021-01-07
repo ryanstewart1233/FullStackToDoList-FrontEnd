@@ -1,0 +1,31 @@
+@import "../style-variables/scss-variables.scss";
+
+.todo-list {
+  width: 90%;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  margin-top: 5rem; //same as 5rem in main section
+
+  &__title {
+    font-size: $title-size;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__item {
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+
+    border-radius: 1rem;
+    box-shadow: $shadow-1;
+  }
+}

@@ -1,0 +1,20 @@
+@import "../style-variables/scss-variables.scss";
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+
+  font-size: 1.5rem;
+
+  &__menu {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__symbols {
+    display: flex;
+    gap: 1rem;
+  }
+}

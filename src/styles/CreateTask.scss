@@ -1,0 +1,59 @@
+@import "../style-variables/scss-variables.scss";
+
+.create-task {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  width: 90%;
+  margin: auto;
+
+  &__title {
+    font-size: $title-size;
+  }
+
+  &__box {
+    height: 20rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: $shadow-1;
+
+    padding: $form-gap;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  gap: $form-gap;
+
+  font-size: 2rem;
+
+  &__inputs {
+    width: 100%;
+    display: flex;
+    gap: $form-gap;
+  }
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 1rem;
+
+    & input {
+      font-size: inherit;
+      background-color: $color-grey-light-2;
+
+      border: 1px solid grey;
+      border-radius: 0.5rem;
+      padding: 1rem;
+    }
+
+    &__label {
+    }
+  }
+}

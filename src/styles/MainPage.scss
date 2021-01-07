@@ -1,0 +1,22 @@
+@import "../style-variables/scss-variables.scss";
+
+.main {
+  width: 140rem;
+  height: 1000rem;
+
+  margin: auto;
+  margin-top: 5rem;
+  position: relative;
+
+  background-color: $color-grey-light-2;
+
+  border-radius: 0.8rem;
+  overflow: hidden;
+
+  box-shadow: $shadow-2;
+
+  &__section {
+    margin-left: 29rem; //29rem is the width of the sidebar
+    margin-top: 5rem;
+  }
+}

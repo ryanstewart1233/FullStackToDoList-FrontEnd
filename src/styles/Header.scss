@@ -1,0 +1,48 @@
+@import "../style-variables/scss-variables.scss";
+
+.header {
+  background-color: $color-grey-light-2;
+
+  height: 10rem;
+
+  box-shadow: $shadow-1;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 75%;
+    margin: auto;
+  }
+
+  &__title {
+    font-size: $title-size;
+    font-weight: bold;
+  }
+
+  &__nav {
+    font-size: 1.8rem;
+    display: flex;
+    gap: 1rem;
+
+    color: $color-grey-light;
+
+    a {
+      @include resetLink;
+
+      &:hover {
+        filter: brightness(80%);
+      }
+    }
+
+    &__item {
+      &:not(:last-child) {
+        padding-right: 1rem;
+        border-right: 2px solid black;
+      }
+
+      transition: all 0.2s;
+    }
+  }
+}
