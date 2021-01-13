@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { FETCH_LISTS } from "../actions/types";
+import { CREATE_ITEM, FETCH_LISTS } from "../actions/types";
 
 const INITIAL_STATE = {};
 
@@ -9,6 +9,7 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_LISTS:
       return { ...state, ..._.mapKeys(action.payload, "_id") };
+
     default:
       return state;
   }

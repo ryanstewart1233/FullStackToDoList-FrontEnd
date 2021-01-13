@@ -1,5 +1,5 @@
-import { useSelector, useDispatch, connect } from "react-redux";
-import { useState, useEffect } from "react";
+import { connect } from "react-redux";
+
 import { BsTrash } from "react-icons/bs";
 
 import "../styles/Sidebar.scss";
@@ -9,10 +9,8 @@ import GoogleAuth from "./GoogleAuth";
 import { fetchLists, setSelectedList } from "../actions";
 
 const Sidebar = (props) => {
-  const selectedList = useSelector((state) => state.selected.List);
-
   const changeSelectedList = (list_id) => {
-    console.log("change list called", list_id);
+    // console.log("change list called", list_id);
     props.setSelectedList(list_id);
   };
 
@@ -33,7 +31,7 @@ const Sidebar = (props) => {
         );
       } else
         return (
-          <li className="side-bar__list-item">
+          <li className="side-bar__list-item" key={list._id}>
             <span
               className="side-bar__list-title"
               onClick={() => changeSelectedList(list._id)}

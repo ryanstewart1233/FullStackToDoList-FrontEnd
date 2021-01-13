@@ -18,6 +18,14 @@
     gap: 1rem;
   }
 
+  &__due-date {
+    width: 15rem;
+  }
+
+  &__completed {
+    text-decoration: line-through;
+  }
+
   &__symbol {
     color: $color-grey-light;
 

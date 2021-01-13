@@ -1,50 +1,64 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
-import {} from "../actions";
+import { deleteItem, checkItem, uncheckItem } from "../actions";
 
 import "../styles/ToDoList.scss";
 import ToDoItem from "./ToDoItem";
 
-import { useSelector } from "react-redux";
-
 const ToDoList = (props) => {
+  const list_id = props.selected._id;
+  const checkItem = (todo_id) => {
+    // console.log("check item", todo_id);
+    props.checkItem(props.user_id, list_id, todo_id);
+  };
+
+  const uncheckItem = (todo_id) => {
+    // console.log("un check item", todo_id);
+    props.uncheckItem(props.user_id, list_id, todo_id);
+  };
+
   const RenderItems = () => {
-    if (props.todo_items?.length !== 0) {
-      return props.todo_items?.map((item) => {
+    if (props.selected.todo_items?.length !== 0) {
+      return props.selected.todo_items?.map((item) => {
         return (
-          <div className="todo-list__item">
-            <ToDoItem key={item._id} title={item.content} />
+          <div className="todo-list__item" key={item._id}>
+            <ToDoItem
+              todo_id={item._id}
+              title={item.content}
+              completed={item.completed}
+              due_date={item.due_date}
+              delete={deleteItem}
+              checkItem={checkItem}
+              uncheckItem={uncheckItem}
+            />
           </div>
         );
       });
     }
   };
 
+  const deleteItem = (todo_id) => {
+    const list_id = props.selected._id;
+    props.deleteItem(props.user_id, list_id, todo_id);
+  };
+
   // console.log(selectedListItems);
   return (
     <div className="todo-list">
-      <div className="todo-list__title">Shopping list</div>
-      <div className="todo-list__list">
-        {RenderItems()}
-        <div className="todo-list__item">
-          <ToDoItem title="get milk" />
-        </div>
-        <div className="todo-list__item">
-          <ToDoItem />
-        </div>
-        <div className="todo-list__item">
-          <ToDoItem />
-        </div>
-      </div>
+      <div className="todo-list__title">{props.selected.list_name}</div>
+      <div className="todo-list__list">{RenderItems()}</div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    todo_items: state.selected.todo_items,
+    user_id: state.auth.userId,
+    selected: state.selected,
   };
 };
 
-export default connect(mapStateToProps, null)(ToDoList);
+export default connect(mapStateToProps, { deleteItem, checkItem, uncheckItem })(
+  ToDoList
+);
