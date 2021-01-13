@@ -21,7 +21,7 @@ class GoogleAuth extends React.Component {
           scope: "email",
         })
         .then(() => {
-          console.log("function called");
+          // console.log("Google Auth func called - function called");
           //this .then will be automatically evoked once our library has successfully initialized itself
           this.auth = window.gapi.auth2.getAuthInstance(); //this will allow us to refer to this.auth anywhere within this class component, which can be used to sign them in or out or get their authentication status
           this.updateSignInStatus(this.auth.isSignedIn.get()); //returns either true or false and passed that to updateSigninStatus function

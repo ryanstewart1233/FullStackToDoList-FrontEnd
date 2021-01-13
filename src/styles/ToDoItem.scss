@@ -17,4 +17,27 @@
     display: flex;
     gap: 1rem;
   }
+
+  &__symbol {
+    color: $color-grey-light;
+
+    transition: all 0.2s;
+
+    &:hover {
+      filter: brightness(50%);
+      transform: scale(1.1);
+
+      cursor: pointer;
+    }
+
+    &--x {
+      // the cross is much larger. this quickly fixes the size compared to the rest
+      transform: scale(0.7);
+
+      &:hover {
+        filter: brightness(50%);
+        transform: scale(0.8);
+      }
+    }
+  }
 }

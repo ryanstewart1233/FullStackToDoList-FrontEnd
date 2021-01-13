@@ -3,15 +3,15 @@ import { reducer as formReducer } from "redux-form";
 
 //my imports
 import authReducer from "./authReducer";
-import todoReducer from "./todoReducer";
-import editModeReducer from "./editModeReducer";
+
 import listReducer from "./listReducer";
+
+import selectListReducer from "./selectListReducer";
 
 export default combineReducers({
   auth: authReducer,
-  toDoList: todoReducer,
-  edit: editModeReducer,
   lists: listReducer,
+  selected: selectListReducer,
   form: formReducer, //must be wired up to form for redux-form to work. Renamed as this make it much clearer which reducer this is on about
 });
 

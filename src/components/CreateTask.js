@@ -11,13 +11,13 @@ function CreateTask() {
               <label htmlFor="title" className="form__input__label">
                 Title
               </label>
-              <input type="text" name="title" />
+              <input type="text" name="title" autoComplete="off" />
             </div>
             <div className="form__input">
               <label htmlFor="duedate" className="form__input__label">
                 Due date
               </label>
-              <input type="date" name="duedate" />
+              <input type="datetime-local" name="duedate" />
             </div>
           </div>
 

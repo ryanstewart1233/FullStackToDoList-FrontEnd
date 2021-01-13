@@ -1,8 +1,53 @@
+import { useSelector, useDispatch, connect } from "react-redux";
+import { useState, useEffect } from "react";
+import { BsTrash } from "react-icons/bs";
+
 import "../styles/Sidebar.scss";
 
 import GoogleAuth from "./GoogleAuth";
 
-function Sidebar() {
+import { fetchLists, setSelectedList } from "../actions";
+
+const Sidebar = (props) => {
+  const selectedList = useSelector((state) => state.selected.List);
+
+  const changeSelectedList = (list_id) => {
+    console.log("change list called", list_id);
+    props.setSelectedList(list_id);
+  };
+
+  const renderLists = () => {
+    return props.lists.map((list) => {
+      // console.log("log lists", list);
+      //todo - if selected_list === list id then render with item--active else render normally
+      if (props.selected?._id === list._id) {
+        return (
+          <li className="side-bar__list-item" key={list._id}>
+            <span className="side-bar__list-title side-bar__list-title--active">
+              {list.list_name}
+            </span>
+            <span className="side-bar__list-icon">
+              <BsTrash />
+            </span>
+          </li>
+        );
+      } else
+        return (
+          <li className="side-bar__list-item">
+            <span
+              className="side-bar__list-title"
+              onClick={() => changeSelectedList(list._id)}
+            >
+              {list.list_name}
+            </span>
+            <span className="side-bar__list-icon">
+              <BsTrash />
+            </span>
+          </li>
+        );
+    });
+  };
+
   return (
     <div className="side-bar">
       <div className="side-bar__container">
@@ -12,11 +57,8 @@ function Sidebar() {
         <div className="side-bar__section">
           <div className="side-bar__lists">
             <ul>
-              <li className="side-bar__list-item side-bar__list-item--active">
-                shopping list
-              </li>
-              <li className="side-bar__list-item"> other list</li>
-              <li className="side-bar__list-item">+ Create New List</li>
+              {renderLists()}
+              <li className="side-bar__list-new">+ Create New List</li>
             </ul>
           </div>
         </div>
@@ -26,6 +68,17 @@ function Sidebar() {
       </div>
     </div>
   );
-}
+};
 
-export default Sidebar;
+const mapStateToProps = (state) => {
+  return {
+    isSignedIn: state.auth.isSignedIn,
+    user_id: state.auth.userId,
+    lists: Object.values(state.lists),
+    selected: state.selected,
+  };
+};
+
+export default connect(mapStateToProps, { fetchLists, setSelectedList })(
+  Sidebar
+);
