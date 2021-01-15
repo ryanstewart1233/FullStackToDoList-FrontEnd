@@ -3,8 +3,6 @@ import Sidebar from "../components/Sidebar";
 import CreateTask from "../components/CreateTask";
 import ToDoList from "../components/ToDoList";
 
-import { useSelector } from "react-redux";
-
 function MainPage() {
   return (
     <div className="main">

@@ -14,10 +14,10 @@ const renderTaskInput = ({ input }) => {
       </label>
       <input
         {...input}
-        key="1234"
         type="text"
         name="content"
         autoComplete="off"
+        required
       />
     </div>
   );
@@ -29,12 +29,13 @@ const renderDateInput = ({ input }) => {
       <label htmlFor="duedate" className="form__input__label">
         Due date
       </label>
-      <input {...input} type="datetime-local" name="duedate" />
+      <input {...input} type="date" name="duedate" required />
     </div>
   );
 };
 
 const CreateTask = (props) => {
+  //todo - either find a way to make the edit in a modal or make this both create and edit
   // console.log(props);
   const onSubmit = (formValues) => {
     console.log("Submit attempted");
@@ -47,13 +48,11 @@ const CreateTask = (props) => {
       <div className="create-task__box">
         <form
           name="create-task-form"
-          id="create-task-form"
-          key="12345"
           className="form"
           onSubmit={props.handleSubmit(onSubmit)}
         >
           <div className="form__inputs">
-            <Field key="123" name="content" component={renderTaskInput} />
+            <Field name="content" component={renderTaskInput} />
             <Field name="due_date" component={renderDateInput} />
           </div>
 

@@ -1,0 +1,51 @@
+@import "../style-variables/scss-variables.scss";
+
+.modal {
+  &__background {
+    z-index: 20;
+    height: 100%;
+    width: 100%;
+
+    background-color: rgba($color-grey-light, 0.8);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__box {
+    width: 50rem;
+    height: calc(min-content);
+    padding: 3rem 0;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: $form-gap;
+
+    border-radius: 1rem;
+    box-shadow: $shadow-1;
+  }
+
+  &__header {
+    font-size: $title-size;
+  }
+
+  &__content {
+    font-size: $text-size;
+  }
+
+  &__actions {
+    display: flex;
+
+    align-items: center;
+    gap: 1rem;
+  }
+}

@@ -6,7 +6,7 @@
   align-items: center;
   padding: 0.5rem 2rem;
 
-  font-size: 1.5rem;
+  font-size: $text-size;
 
   &__menu {
     display: flex;
@@ -19,7 +19,8 @@
   }
 
   &__due-date {
-    width: 15rem;
+    width: 20rem;
+    text-align: right;
   }
 
   &__completed {

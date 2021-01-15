@@ -7,6 +7,8 @@ import { ImCross } from "react-icons/im";
 import { MdEdit } from "react-icons/md";
 import { BsTrash } from "react-icons/bs";
 
+import getDateFormat from "../functions/getDateFormat";
+
 const ToDoItem = (props) => {
   //todo - due date red for overdue, normal for the same day, green for over a day left
 
@@ -35,12 +37,6 @@ const ToDoItem = (props) => {
     }
   };
 
-  const renderDate = () => {
-    //todo - fix the shitty dates
-    var d = new Date(props.due_date);
-    // console.log(d);
-  };
-
   const renderIfCompleted = () => {
     if (props.completed === true) {
       return "item__completed";
@@ -64,7 +60,7 @@ const ToDoItem = (props) => {
             <BsTrash />
           </div>
         </div>
-        <div className="item__due-date">Wednesday 14th 2021 {renderDate()}</div>
+        <div className="item__due-date">{getDateFormat(props.due_date)}</div>
       </div>
     </div>
   );

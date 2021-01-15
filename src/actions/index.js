@@ -2,6 +2,8 @@ import todoapi from "../apis/todoapi";
 
 import { reset } from "redux-form";
 
+import history from "../history";
+
 import {
   FETCH_LISTS,
   SIGN_IN,
@@ -11,6 +13,8 @@ import {
   DELETE_ITEM,
   CHECK_ITEM,
   UN_CHECK_ITEM,
+  DELETE_LIST,
+  CREATE_LIST,
 } from "./types";
 
 //For Google Auth
@@ -18,11 +22,14 @@ export const signIn = (userId) => async (dispatch, getState) => {
   await dispatch({ type: SIGN_IN, payload: userId });
 
   await dispatch(fetchLists(userId));
+  history.push("/main");
 };
 
 export const signOut = (userId) => (dispatch) => {
   dispatch({ type: SIGN_OUT });
   //   dispatch(resetListItems());
+
+  history.push("/");
 };
 
 export const fetchLists = (user_id) => async (dispatch, getState) => {
@@ -48,6 +55,24 @@ export const fetchLists = (user_id) => async (dispatch, getState) => {
     }
     waitForElement();
   }
+};
+
+export const createList = (formValues, user_id) => async (dispatch) => {
+  const response = await todoapi.post(`/lists/${user_id}`, { ...formValues });
+  console.log("Create List action", response);
+
+  dispatch({ type: CREATE_LIST, payload: response.data });
+  dispatch(reset("toDoForm")); //this resets the form value to be blank after successful addition
+  history.push("/main");
+};
+
+export const deleteList = (user_id, list_id) => async (dispatch) => {
+  const response = await todoapi.delete(`/lists/${user_id}/${list_id}`);
+
+  console.log("Delete list action", list_id, response);
+
+  dispatch({ type: DELETE_LIST, payload: list_id });
+  history.push("/main");
 };
 
 export const setSelectedList = (list_id) => async (dispatch, getState) => {

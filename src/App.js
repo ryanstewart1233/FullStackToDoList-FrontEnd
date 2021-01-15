@@ -1,23 +1,30 @@
-import "./App.scss";
-import LandingPage from './pages/LandingPage'
-import MainPage from './pages/MainPage'
+import React from "react";
+import { Router, Route, Switch } from "react-router-dom";
+
+import history from "./history";
+
+import LandingPage from "./pages/LandingPage";
+
+import MainPage from "./pages/MainPage";
+
+import DeleteListModal from "./components/modal-components/DeleteListModal";
+import CreateNewListModal from "./components/modal-components/CreateNewListModal";
+import Modal from "./components/modal-components/Modal";
 
 function App() {
   return (
-    // <div className="app">
-    //   <div className="sidebar">
-    //     <div className="sidebar__title">ToDoTogether</div>
-    //     <div className="sidebar__todo-lists">
-    //       <ul>
-    //         <li>list1</li>
-    //         <li>list2</li>
-    //         <li>list3</li>
-    //       </ul>
-    //     </div>
-    //   </div>
-    // </div>
-    // <LandingPage/>
-    <MainPage/>
+    <div className="app">
+      <Router history={history}>
+        <Switch>
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/main" component={MainPage} />
+        </Switch>
+        {/* if the modal is outside the switch then it can show up ontop of the rest
+        of the app. */}
+        <Route path="/main/delete/:list_id" exact component={DeleteListModal} />
+        <Route path="/main/create-list" exact component={CreateNewListModal} />
+      </Router>
+    </div>
   );
 }
 

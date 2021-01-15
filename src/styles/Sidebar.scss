@@ -79,6 +79,11 @@
       filter: brightness(50%);
       cursor: pointer;
     }
+
+    & a {
+      text-decoration: none;
+      color: inherit;
+    }
   }
 
   &__list-new {
@@ -86,6 +91,11 @@
     &:hover {
       filter: brightness(50%);
       cursor: pointer;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
   }
 }
