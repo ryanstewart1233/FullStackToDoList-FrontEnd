@@ -9,7 +9,7 @@ import MainPage from "./pages/MainPage";
 
 import DeleteListModal from "./components/modal-components/DeleteListModal";
 import CreateNewListModal from "./components/modal-components/CreateNewListModal";
-import Modal from "./components/modal-components/Modal";
+import EditListModal from "./components/modal-components/EditListModal";
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
         of the app. */}
         <Route path="/main/delete/:list_id" exact component={DeleteListModal} />
         <Route path="/main/create-list" exact component={CreateNewListModal} />
+        <Route path="/main/edit/:list_id" exact component={EditListModal} />
       </Router>
     </div>
   );

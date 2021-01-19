@@ -1,3 +1,6 @@
+@import "./style-variables/css-variables.scss";
+@import "./style-variables/scss-variables.scss";
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -24,6 +27,10 @@ code {
 
 html {
   font-size: 62.5%;
+
+  @media only screen and (max-width: $bp-large) {
+    font-size: 58.75%;
+  }
 }
 
 body {
@@ -33,4 +40,19 @@ body {
   //todo -- find a nice font weight
 
   //for the modal to work
+}
+
+.app {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  background-color: rgba(#2d48c0, 0.7);
+  background-size: cover;
+
+  @media only screen and (max-width: $bp-largest) {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+
+    background-color: #fff;
+  }
 }

@@ -4,13 +4,13 @@ const getDateFormat = (date_to_convert) => {
 
   const day_int = date.getDay();
   const days = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday",
   ];
   const day = days[day_int];
 

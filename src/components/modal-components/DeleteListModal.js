@@ -6,6 +6,8 @@ import Modal from "./Modal";
 import history from "../../history";
 import { deleteList } from "../../actions";
 
+import CustomButton from "../CustomButton";
+
 const DeleteListModal = (props) => {
   console.log(props);
   const deleteList = () => {
@@ -14,11 +16,16 @@ const DeleteListModal = (props) => {
   const renderActions = () => {
     return (
       <React.Fragment>
-        <button className="ui button negative" onClick={() => deleteList()}>
+        <CustomButton
+          color="primary"
+          className="ui Button negative"
+          onClick={() => deleteList()}
+        >
           Delete
-        </button>
+        </CustomButton>
+
         <Link to="/main" className="ui button">
-          Cancel
+          <CustomButton color="grey">Cancel</CustomButton>
         </Link>
       </React.Fragment>
     );

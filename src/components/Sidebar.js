@@ -60,10 +60,10 @@ const Sidebar = (props) => {
   };
 
   return (
-    <div className="side-bar">
+    <div className="side-bar side-bar__small">
       <div className="side-bar__container">
         <div className="side-bar__section">
-          <div className="side-bar__title">ToDo List</div>
+          <div className="side-bar__title">ToDoList</div>
         </div>
         <div className="side-bar__section">
           <div className="side-bar__lists">

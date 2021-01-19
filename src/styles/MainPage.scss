@@ -2,10 +2,12 @@
 
 .main {
   width: 140rem;
-  height: 1000rem;
+  padding-bottom: 10rem;
+  min-height: 100rem;
 
   margin: auto;
-  margin-top: 5rem;
+  padding-top: 5rem;
+
   position: relative;
 
   background-color: $color-grey-light-2;
@@ -13,10 +15,26 @@
   border-radius: 0.8rem;
   overflow: hidden;
 
-  box-shadow: $shadow-2;
+  box-shadow: $shadow-3;
 
   &__section {
     margin-left: 29rem; //29rem is the width of the sidebar
-    margin-top: 5rem;
+
+    @media only screen and (max-width: $bp-large) {
+      margin-left: 27rem;
+    }
+    @media only screen and (max-width: $bp-medium) {
+      margin-left: 25.5rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      margin-left: 0;
+      z-index: 1;
+      position: relative;
+    }
+  }
+
+  @media only screen and (max-width: $bp-largest) {
+    width: auto;
   }
 }

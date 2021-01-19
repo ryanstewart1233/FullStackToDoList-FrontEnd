@@ -2,7 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { signIn, signOut } from "../actions/";
 
+import { FcGoogle } from "react-icons/fc";
+
 import history from "../history";
+
+import "../styles/GoogleAuth.scss";
 
 //to create this go to console.developers.google.com to set up a new project.
 //Stephen has a good video on how to do this
@@ -62,16 +66,20 @@ class GoogleAuth extends React.Component {
       return null;
     } else if (this.props.isSignedIn) {
       return (
-        <button className="ui red google button" onClick={this.onSignOutClick}>
-          <i className="google icon" />
+        <button className="google__admin-btn" onClick={this.onSignOutClick}>
+          <i className="google__icon">
+            <FcGoogle />
+          </i>
           Sign Out
         </button>
       );
     } else {
       return (
-        <button className="ui red google button" onClick={this.onSignInClick}>
-          <i className="google icon" />
-          Sign In with Google
+        <button className="google__admin-btn" onClick={this.onSignInClick}>
+          <i className="google__icon">
+            <FcGoogle />
+          </i>
+          Sign In
         </button>
       );
     }

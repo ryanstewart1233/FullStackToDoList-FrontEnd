@@ -5,6 +5,9 @@ import {
   CREATE_ITEM,
   CHECK_ITEM,
   UN_CHECK_ITEM,
+  EDIT_ITEM,
+  EDIT_LIST,
+  RESET_STATE,
 } from "../actions/types";
 
 const INITIAL_STATE = {};
@@ -23,6 +26,12 @@ export default (state = INITIAL_STATE, action) => {
       return action.payload;
     case UN_CHECK_ITEM:
       return action.payload;
+    case EDIT_ITEM:
+      return action.payload;
+    case EDIT_LIST:
+      return action.payload;
+    case RESET_STATE:
+      return INITIAL_STATE;
 
     default:
       return state;

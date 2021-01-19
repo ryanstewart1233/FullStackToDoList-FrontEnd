@@ -19,7 +19,7 @@
 
   &__box {
     width: 50rem;
-    height: calc(min-content);
+    height: min-content;
     padding: 3rem 0;
     background-color: white;
 
@@ -28,7 +28,7 @@
     justify-content: center;
     align-items: center;
 
-    gap: $form-gap;
+    gap: 2rem;
 
     border-radius: 1rem;
     box-shadow: $shadow-1;

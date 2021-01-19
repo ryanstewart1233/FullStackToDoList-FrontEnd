@@ -22,3 +22,9 @@ export const FETCH_LISTS = "FETCH_LISTS";
 export const DELETE_LIST = "DELETE_LIST";
 
 export const SELECT_LIST = "SELECT_LIST";
+
+export const STOP_EDIT = "STOP_EDIT";
+
+export const SET_EDIT_ITEM = "SET_EDIT_ITEM";
+
+export const RESET_STATE = "RESET_STATE";

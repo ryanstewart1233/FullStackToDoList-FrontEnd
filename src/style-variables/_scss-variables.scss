@@ -1,15 +1,25 @@
 $color-dark-1: #191a1d;
+
+$color-white: #fff;
+
 $color-grey-light: #ababab;
 $color-grey-light-2: #f6f6f6;
 $color-grey-light-3: #a59d9d;
 
 $shadow-1: 0 0.3rem 0.5rem rgba($color-dark-1, 0.1);
 $shadow-2: 0 0.3rem 0.5rem rgba($color-dark-1, 0.2);
+$shadow-3: 0 0.4rem 1rem rgba($color-dark-1, 0.3);
 
 $title-size: 3rem;
 $text-size: 1.5rem;
 
 $form-gap: 4rem;
+
+//BREAK POINTS
+$bp-largest: 88em; //1280px
+$bp-large: 65em; //1040px
+$bp-medium: 56.25em; // 900px
+$bp-small: 50em;
 
 @mixin resetLink {
   color: inherit;

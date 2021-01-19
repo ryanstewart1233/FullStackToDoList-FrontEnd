@@ -6,14 +6,12 @@ import { connect } from "react-redux";
 import Modal from "./Modal";
 import history from "../../history";
 import { createList } from "../../actions";
+import CustomButton from "../CustomButton";
 
 //has to live outside to prevent field from un-focusing on typing
 const renderTaskInput = ({ input }) => {
   return (
-    <div className="form__input" key="task-input">
-      <label htmlFor="list_name" className="form__input__label">
-        Title
-      </label>
+    <div className="form__input form__input--full" key="task-input">
       <input
         {...input}
         type="text"
@@ -26,23 +24,6 @@ const renderTaskInput = ({ input }) => {
 };
 
 const CreateNewListModal = (props) => {
-  console.log(props);
-  const deleteList = () => {
-    props.deleteList(props.user_id, props.list._id);
-  };
-  const renderActions = () => {
-    return (
-      <React.Fragment>
-        <button className="ui button negative" onClick={() => deleteList()}>
-          Delete
-        </button>
-        <Link to="/main" className="ui button">
-          Cancel
-        </Link>
-      </React.Fragment>
-    );
-  };
-
   const onSubmit = (formValues) => {
     console.log("Submit create list attempted");
     props.createList(formValues, props.user_id);
@@ -52,14 +33,20 @@ const CreateNewListModal = (props) => {
     return (
       <form
         name="create-list-form"
-        className="form"
+        className="form form--centered"
         onSubmit={props.handleSubmit(onSubmit)}
       >
         <div className="form__inputs">
           <Field name="list_name" component={renderTaskInput} />
         </div>
-
-        <button type="submit">Create Task</button>
+        <div className="form__buttons">
+          <CustomButton color="primary" type="submit">
+            Create Task
+          </CustomButton>
+          <Link to="/main" className="ui button">
+            <CustomButton color="grey">Cancel</CustomButton>
+          </Link>
+        </div>
       </form>
     );
   };
@@ -69,7 +56,6 @@ const CreateNewListModal = (props) => {
       onDismiss={() => history.push("/main")}
       title="Create New List"
       content={renderContent()}
-      actions={renderActions()}
     />
   );
 };

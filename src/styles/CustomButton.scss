@@ -1,0 +1,41 @@
+@import "../style-variables/scss-variables.scss";
+
+.btn {
+  border: none;
+  outline: none;
+
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+
+  box-shadow: $shadow-1;
+
+  color: var(--color-white);
+
+  transition: all 0.2s;
+
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-0.1rem);
+
+    box-shadow: $shadow-2;
+  }
+
+  &:active {
+    transform: translateY(-0.02rem);
+    box-shadow: $shadow-1;
+  }
+
+  &--primary {
+    background-color: var(--color-primary);
+  }
+
+  &--grey {
+    background-color: var(--color-grey-light-2);
+    color: var(--color-dark);
+  }
+
+  a {
+    @include resetLink;
+  }
+}

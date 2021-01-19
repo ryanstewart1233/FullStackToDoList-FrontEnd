@@ -1,11 +1,13 @@
 @import "../style-variables/scss-variables.scss";
 
 .header {
-  background-color: $color-grey-light-2;
+  background-color: var(--color-white);
 
   height: 10rem;
 
   box-shadow: $shadow-1;
+
+  margin-top: -5rem;
 
   &__container {
     display: flex;
@@ -19,6 +21,8 @@
   &__title {
     font-size: $title-size;
     font-weight: bold;
+
+    color: var(--color-primary);
   }
 
   &__nav {
@@ -30,10 +34,6 @@
 
     a {
       @include resetLink;
-
-      &:hover {
-        filter: brightness(80%);
-      }
     }
 
     &__item {

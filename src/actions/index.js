@@ -15,6 +15,11 @@ import {
   UN_CHECK_ITEM,
   DELETE_LIST,
   CREATE_LIST,
+  SET_EDIT_ITEM,
+  STOP_EDIT,
+  EDIT_ITEM,
+  EDIT_LIST,
+  RESET_STATE,
 } from "./types";
 
 //For Google Auth
@@ -27,7 +32,7 @@ export const signIn = (userId) => async (dispatch, getState) => {
 
 export const signOut = (userId) => (dispatch) => {
   dispatch({ type: SIGN_OUT });
-  //   dispatch(resetListItems());
+  dispatch({ type: RESET_STATE });
 
   history.push("/");
 };
@@ -42,8 +47,11 @@ export const fetchLists = (user_id) => async (dispatch, getState) => {
   //determines if the object is empty and if so sets it to be the first list -includes timeout to avoid loading errors (only happens once on load to ensure a list is selected)
   if (Object.keys(getState().selected).length === 0) {
     function waitForElement() {
-      //   console.log("getState", getState());
-      if (getState().lists !== "undefined") {
+      if (
+        getState().lists !== "undefined" &&
+        Object.keys(getState().lists).length !== 0
+        //only sets to first list if there are list available
+      ) {
         const list_id = Object.values(getState().lists)[0]._id;
 
         // console.log("list-id", list);
@@ -97,7 +105,7 @@ export const createItem = (formValues, user_id, list_id) => async (
   //   console.log("Create Item", response.data.todo_items);
 
   dispatch({ type: CREATE_ITEM, payload: response.data });
-  dispatch(fetchLists(getState().auth.userId)); //todo -simple fix for issue (if you click off list then back on it doesnt work) - find better solution
+  dispatch(fetchLists(getState().auth.userId)); //--
   dispatch(reset("toDoForm"));
 };
 
@@ -131,4 +139,36 @@ export const uncheckItem = (user_id, list_id, todo_id) => async (dispatch) => {
   // console.log("Item UN checked ", response.data.todo_items);
 
   dispatch({ type: UN_CHECK_ITEM, payload: response.data });
+};
+
+export const setEditItem = (todo_id) => (dispatch) => {
+  dispatch({ type: SET_EDIT_ITEM, payload: todo_id });
+};
+
+export const stopEdit = () => (dispatch) => {
+  dispatch({ type: STOP_EDIT });
+};
+
+export const editItem = (formValues, user_id, list_id, todo_id) => async (
+  dispatch
+) => {
+  const response = await todoapi.patch(
+    `/todos/${user_id}/${list_id}/${todo_id}`,
+    { ...formValues }
+  );
+
+  console.log("edit item action ", response.data);
+
+  dispatch({ type: EDIT_ITEM, payload: response.data });
+};
+
+export const editList = (formValues, user_id, list_id) => async (dispatch) => {
+  const response = await todoapi.patch(`/lists/${user_id}/${list_id}`, {
+    ...formValues,
+  });
+
+  console.log("Edit list action ", response);
+
+  dispatch({ type: EDIT_LIST, payload: response.data });
+  history.push("/main");
 };

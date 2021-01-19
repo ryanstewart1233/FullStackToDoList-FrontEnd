@@ -1,0 +1,24 @@
+@import "../style-variables/scss-variables.scss";
+
+.create-task {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  width: 90%;
+  margin: auto;
+
+  &__title {
+    font-size: $title-size;
+  }
+
+  &__box {
+    height: 20rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: $shadow-1;
+
+    padding: $form-gap;
+  }
+}

@@ -1,6 +1,6 @@
 import "../styles/MainPage.scss";
 import Sidebar from "../components/Sidebar";
-import CreateTask from "../components/CreateTask";
+import CreateEditTask from "../components/CreateEditTask";
 import ToDoList from "../components/ToDoList";
 
 function MainPage() {
@@ -8,7 +8,7 @@ function MainPage() {
     <div className="main">
       <Sidebar />
       <div className="main__section">
-        <CreateTask />
+        <CreateEditTask />
         <ToDoList />
       </div>
     </div>

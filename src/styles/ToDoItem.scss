@@ -8,19 +8,30 @@
 
   font-size: $text-size;
 
-  &__menu {
+  &__symbols {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__left {
     display: flex;
     gap: 2rem;
   }
 
-  &__symbols {
-    display: flex;
-    gap: 1rem;
-  }
-
   &__due-date {
-    width: 20rem;
+    width: 22rem;
     text-align: right;
+
+    color: var(--color-grey-light);
+
+    &--overdue {
+      color: var(--color-overdue);
+    }
+
+    &--time-remaining {
+      color: var(--color-not-overdue);
+    }
   }
 
   &__completed {

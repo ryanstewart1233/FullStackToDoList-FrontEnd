@@ -41,16 +41,33 @@ const ToDoItem = (props) => {
     if (props.completed === true) {
       return "item__completed";
     } else {
-      return;
+      return "";
     }
   };
+
+  const renderDateColor = () => {
+    //grey if the same day, red if overdue, green if more than a day remaining
+    const today = new Date();
+    const due_date = new Date(props.due_date);
+    if (due_date.getDay() === today.getDay()) {
+      return;
+    }
+    if (due_date < today) {
+      return "item__due-date--overdue";
+    } else if (due_date > today) {
+      return "item__due-date--time-remaining";
+    }
+  };
+
   return (
     <div className="item">
-      <div className={`item__title ${renderIfCompleted()}`}>{props.title}</div>
-      <div className="item__menu">
+      <div className="item__left">
         <div className="item__symbols">
           {renderTickCross()}
-          <div className="item__symbol item__symbol-2">
+          <div
+            className="item__symbol item__symbol-2"
+            onClick={() => props.setEditItem(props.todo_id)}
+          >
             <MdEdit />
           </div>
           <div
@@ -60,7 +77,14 @@ const ToDoItem = (props) => {
             <BsTrash />
           </div>
         </div>
-        <div className="item__due-date">{getDateFormat(props.due_date)}</div>
+        <div className={`item__title ${renderIfCompleted()}`}>
+          {props.title}
+        </div>
+      </div>
+      <div className="item__right">
+        <div className={`item__due-date ${renderDateColor()}`}>
+          {getDateFormat(props.due_date)}
+        </div>
       </div>
     </div>
   );
