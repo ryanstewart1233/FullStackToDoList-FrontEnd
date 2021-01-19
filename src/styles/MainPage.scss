@@ -17,6 +17,10 @@
 
   box-shadow: $shadow-3;
 
+  @media only screen and (max-width: $bp-small) {
+    padding-top: 1rem;
+  }
+
   &__section {
     margin-left: 29rem; //29rem is the width of the sidebar
 

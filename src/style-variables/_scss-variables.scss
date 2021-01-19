@@ -19,7 +19,8 @@ $form-gap: 4rem;
 $bp-largest: 88em; //1280px
 $bp-large: 65em; //1040px
 $bp-medium: 56.25em; // 900px
-$bp-small: 50em;
+$bp-small: 50em; //800px
+$bp-smaller: 34em; //550px
 
 @mixin resetLink {
   color: inherit;

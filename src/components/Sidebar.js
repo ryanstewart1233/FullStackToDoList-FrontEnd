@@ -1,6 +1,9 @@
+import { useState } from "react";
+
 import { connect } from "react-redux";
 
 import { BsTrash } from "react-icons/bs";
+import { ImCross } from "react-icons/im";
 
 import "../styles/Sidebar.scss";
 
@@ -11,6 +14,7 @@ import { fetchLists, setSelectedList } from "../actions";
 import { Link } from "react-router-dom";
 
 const Sidebar = (props) => {
+  const [width, setWidth] = useState("small");
   const changeSelectedList = (list_id) => {
     // console.log("change list called", list_id);
     props.setSelectedList(list_id);
@@ -55,12 +59,36 @@ const Sidebar = (props) => {
     });
   };
 
-  const renderCreateNewListButton = () => {
-    return <Link to={"/main/create-list"}>+ Create New List</Link>;
+  const sideBarVisiblity = () => {
+    if (props.is_visible === true) {
+      return "side-bar__visible";
+    } else return "side-bar__in-visible";
+  };
+
+  const set_visibility = () => {
+    if (props.is_visible === true) {
+      props.set_is_visible(false);
+    } else if (props.is_visible === false) {
+      props.set_is_visible(true);
+    }
+  };
+
+  const render_X_onMobile = () => {
+    if (props.is_visible === true) {
+      return (
+        <div
+          className="side-bar__mobile-cross"
+          onClick={() => set_visibility()}
+        >
+          <ImCross />
+        </div>
+      );
+    }
   };
 
   return (
-    <div className="side-bar side-bar__small">
+    <div className={`side-bar ${sideBarVisiblity()}`} width={"0"}>
+      {render_X_onMobile()}
       <div className="side-bar__container">
         <div className="side-bar__section">
           <div className="side-bar__title">ToDoList</div>
