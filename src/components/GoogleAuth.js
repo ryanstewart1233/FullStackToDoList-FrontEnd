@@ -44,14 +44,12 @@ class GoogleAuth extends React.Component {
   };
 
   onSignInClick = () => {
-    console.log(this);
-    console.log(this.auth);
     this.auth.signIn();
   };
 
   componentDidUpdate = () => {
     //the below sends the users to their lists page the moment they login from the landing page
-    console.log(this.props);
+
     if (this.props.isSignedIn) {
       history.push("/main");
     }
@@ -63,9 +61,10 @@ class GoogleAuth extends React.Component {
   };
 
   renderAuthButton() {
-    if (this.props.isSignedIn === null) {
-      return null;
-    } else if (this.props.isSignedIn) {
+    // if (this.props.isSignedIn === null) {
+    //   return null;
+    // } else
+    if (this.props.isSignedIn) {
       return (
         <button className="google__admin-btn" onClick={this.onSignOutClick}>
           <i className="google__icon">
