@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Router, Route, Switch } from "react-router-dom";
 
 import history from "./history";
@@ -12,13 +12,17 @@ import CreateNewListModal from "./components/modal-components/CreateNewListModal
 import EditListModal from "./components/modal-components/EditListModal";
 
 function App() {
+  const [location, setLocation] = useState(window.location.pathname);
+
   return (
     <div className="app">
       <Router history={history}>
         <Switch>
           <Route path="/" exact component={LandingPage} />
+
           <Route path="/main" component={MainPage} />
         </Switch>
+
         {/* if the modal is outside the switch then it can show up ontop of the rest
         of the app. */}
         <Route path="/main/delete/:list_id" exact component={DeleteListModal} />

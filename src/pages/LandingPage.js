@@ -6,11 +6,13 @@ import AppImage from "../images/todolist.png";
 
 function LandingPage() {
   return (
-    <div className="landing-page">
-      <Header />
+    <div className="landing-page__container">
+      <div className="landing-page">
+        <Header />
 
-      <div className="img-container">
-        <img src={AppImage}></img>
+        <div className="img-container">
+          <img src={AppImage}></img>
+        </div>
       </div>
     </div>
   );

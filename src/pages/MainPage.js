@@ -38,12 +38,17 @@ function MainPage() {
     }
   };
   return (
-    <div className="main">
-      <Sidebar is_visible={sideBarVisible} set_is_visible={setSideBarVisible} />
-      <div className="main__section">
-        {renderMobileSideBar()}
-        <CreateEditTask />
-        <ToDoList />
+    <div className="main-page__container">
+      <div className="main">
+        <Sidebar
+          is_visible={sideBarVisible}
+          set_is_visible={setSideBarVisible}
+        />
+        <div className="main__section">
+          {renderMobileSideBar()}
+          <CreateEditTask />
+          <ToDoList />
+        </div>
       </div>
     </div>
   );

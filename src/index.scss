@@ -47,6 +47,9 @@ body {
 }
 
 .app {
+}
+
+.main-page__container {
   padding-top: 5rem;
   padding-bottom: 5rem;
 
@@ -59,4 +62,8 @@ body {
 
     background-color: #fff;
   }
+}
+
+.landing-page__container {
+  background-color: rgba(#2d48c0, 0.7);
 }

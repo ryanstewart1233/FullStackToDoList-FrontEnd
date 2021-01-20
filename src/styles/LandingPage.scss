@@ -3,6 +3,8 @@
 .landing-page {
   display: flex;
   flex-direction: column;
+
+  justify-content: space-between;
 }
 
 .img-container {
@@ -11,6 +13,17 @@
 
   padding: 5rem 3rem;
 
+  @media only screen and (max-width: $bp-largest) {
+    width: 100%;
+    height: auto;
+    margin: auto;
+  }
+
   img {
+    @media only screen and (max-width: $bp-largest) {
+      width: 100%;
+      height: auto;
+      margin: auto;
+    }
   }
 }
