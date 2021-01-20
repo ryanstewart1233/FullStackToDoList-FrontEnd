@@ -51,8 +51,9 @@ class GoogleAuth extends React.Component {
 
   componentDidUpdate = () => {
     //the below sends the users to their lists page the moment they login from the landing page
-    if (this.props.landingPage && this.props.isSignedIn) {
-      history.push("/lists");
+    console.log(this.props);
+    if (this.props.isSignedIn) {
+      history.push("/main");
     }
   };
 
